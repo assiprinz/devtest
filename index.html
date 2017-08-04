@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Device Test</title>
+    <link rel="author" href="humans.txt">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            overflow: hidden;
+            background: #262626;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        div {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        #viewport {
+            width: 100%;
+            height: 100%;
+            overflow-x: scroll;
+        }
+        #wrap {
+            width: auto;
+            height: 100%;
+        }
+        #devices {
+            width: auto;
+            height: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+        }
+        .device {
+            position: relative;
+            margin: 0 60px 0;
+            flex: 0 0 auto;
+        }
+        .device iframe {
+            position: absolute;
+            background: #fff;
+        }
+        .device img {
+            width: 100%;
+            height: auto;
+        }
+        .device span {
+            color: #f0f0f0;
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            font-weight: bold;
+            text-shadow: 0 1px 3px #000;
+        }
+        iframe#ipad {
+            width: 768px;
+            height:1024px;
+            top:113px;
+            left:52px;
+        }
+        iframe#iphone6plus {
+            width: 414px;
+            height:736px;
+            top:107px;
+            left:26px;
+        }
+        iframe#iphone6 {
+            width: 376px;
+            height: 670px;
+            top: 102px;
+            left: 27px;
+        }
+        iframe#iphone5 {
+            width: 320px;
+            height: 568px;
+            top: 105px;
+            left: 26px;
+        }
+        iframe#nexus6 {
+            width: 412px;
+            height: 732px;
+            top: 92px;
+            left: 15px;
+        }
+        iframe#nexus5 {
+            width: 412px;
+            height: 661px;
+            top: 112px;
+            left: 18px;
+        }
+        .spacer {
+            flex: 0 0 100px;
+            height: 100%;
+        }
+        .ipad {width:874px;}
+        .i6p {width:470px;}
+        .i6 {width:431px;}
+        .i5 {width:368px;}
+        .n6 {width:443px;}
+        .n5 {width:452px;}
+    </style>
+</head>
+<body>
+    <div id="viewport">
+        <div id="wrap">
+            <div id="devices">
+                <div class="spacer"></div>
+                <div class="device ipad"><img src="d/ipad.png" alt=""><iframe class="dframe" id="ipad" src="" frameborder="0"></iframe><span>iPad</span></div>
+                <div class="device i6p"><img src="d/iphone6plus.png" alt=""><iframe class="dframe" id="iphone6plus" src="" frameborder="0"></iframe><span>iPhone 6 Plus</span></div>
+                <div class="device n6"><img src="d/nexus6.png" alt=""><iframe class="dframe" id="nexus6" src="" frameborder="0"></iframe><span>Nexus 6P</span></div>
+                <div class="device n5"><img src="d/nexus5.png" alt=""><iframe class="dframe" id="nexus5" src="" frameborder="0"></iframe><span>Nexus 5</span></div>
+                <div class="device i6"><img src="d/iphone6.png" alt=""><iframe class="dframe" id="iphone6" src="" frameborder="0"></iframe><span>iPhone 6</span></div>
+                <div class="device i5"><img src="d/iphone5.png" alt=""><iframe class="dframe" id="iphone5" src="" frameborder="0"></iframe><span>iPhone 5</span></div>
+                <div class="spacer"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getQueryVar(vari) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == vari) {
+                    return pair[1];
+                }
+            } 
+        }
+        console.log('hi');
+        var url = getQueryVar('url') || 'https://janeberl.de';
+        var frames = document.getElementsByClassName('dframe');
+        for (var i = 0; i < frames.length; i++) {
+            frames[i].src = url;
+        }
+    </script>
+</body>
+</html>
